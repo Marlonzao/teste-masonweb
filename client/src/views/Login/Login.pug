@@ -1,0 +1,25 @@
+div(ng-show='loaded')
+	section.material-half-bg
+		.cover
+	section.login-content
+		.logo
+			h1 MasonWeb
+		.login-box
+			form.login-form
+				h3.login-head
+					i.fa.fa-lg.fa-fw.fa-user
+					| Login
+				.form-group
+					label.control-label Email
+					input.form-control(ng-model='email', type='text', placeholder='Email', autofocus='')
+				.form-group
+					label.control-label Senha
+					input.form-control(ng-model='password', type='password', placeholder='Senha')
+				.form-group
+					.utility
+						p.semibold-text.mb-2.text-center
+							a(href='javascript:void(0)') Registre-se
+				.form-group.btn-container
+					button.btn.btn-primary.btn-block(ng-click="login()")
+						i.fas.fa-sign-in-alt.mr-1
+						| Login
