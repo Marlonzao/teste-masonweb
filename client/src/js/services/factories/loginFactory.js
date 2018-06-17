@@ -1,4 +1,4 @@
-app.factory('loginFactory', ['$http', '$resource', 'apiURL', function($http, $resource, apiURL) {
+app.factory('loginFactory', ['$http', 'apiURL', '$rootScope', function($http, apiURL, $rootScope) {
     var loginFactory = {};
     var baseURL = apiURL.get()+'auth/';
 
@@ -12,16 +12,20 @@ app.factory('loginFactory', ['$http', '$resource', 'apiURL', function($http, $re
             }
         );
     }
+
+    logout = function(){
+        $rootScope.user = $rootScope.mainLoading = false;
+        localStorage.removeItem("id_token");
+        return true;
+    }
+
+
     loginFactory.logout = function(){
-        return $http.delete(baseURL+'invalidate').then( 
-            function(result){
-                localStorage.removeItem("id_token");
-                return true;                       
-            }, function(result){
-                localStorage.removeItem("id_token");
-                return true;                
-            }
-        );
+        return $http.delete(baseURL+'invalidate').then(function(){
+            return logout();
+        }, function(){
+            return logout();
+        });
     }
 
     return loginFactory;

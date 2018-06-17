@@ -16,3 +16,7 @@ app.config(function Config($httpProvider, jwtOptionsProvider) {
 
     $httpProvider.interceptors.push('jwtInterceptor');
 })
+
+app.config(function($compileProvider){
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/);
+});

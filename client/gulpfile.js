@@ -86,7 +86,6 @@ var path = {
   // Arquivos que devem ser movidos para a pasta /dist
   FILES: [
     'src/.htaccess', 
-    'src/favicon.png',
     'src/libs/**/*'
   ],
   // Arquivos javascript que devem ser minificados, concatenados e movidos para

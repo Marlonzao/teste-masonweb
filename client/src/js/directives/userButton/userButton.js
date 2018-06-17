@@ -5,12 +5,10 @@ app.directive('userButton', function(){
         replace: true,
         controller: ['$scope', '$state', 'loginFactory', 'toaster', function($scope, $state, loginFactory, toaster){
             $scope.logout = function(){
-                loginFactory.logout.delete().$promise.then(
-                    function(result){
-                        toaster.pop('success', "Deslogado", "");
-                        $state.go('Login');                        
-                    }
-                )    
+                loginFactory.logout().then( function(result){
+                    toaster.pop('success', "Deslogado", "");
+                    $state.go('Login');
+                })
             }
         }]
     }

@@ -1,7 +1,7 @@
 //- TODO: Tornar o placeholder de texto maior
 aside.app-sidebar
-  section(ng-cloak="")
-    article(ng-hide='user.name && loaded')
+  section()
+    article(ng-if='!loaded')
       .item
         .animated-bg
           .mask.header-top
@@ -17,28 +17,18 @@ aside.app-sidebar
           .mask.content-second-end
           .mask.content-third-line
           .mask.content-third-end 
-    article(ng-show='user.name && loaded')
+    article(ng-if='loaded')
       .app-sidebar__user
-        img.app-sidebar__user-avatar(ng-src='{{user.photo}}', alt='User Image')
+        img.app-sidebar__user-avatar(ng-src='{{$root.user.photo}}', alt='User Image', heigth="50", width="50")
         div
-          p.app-sidebar__user-name {{user.firstName}}
-          p.app-sidebar__user-designation {{user.bio}}
+          p.app-sidebar__user-name {{$root.user.firstName}}
+          p.app-sidebar__user-designation {{$root.user.bio}}
       ul.app-menu
-        li(ng-repeat="module in sideBar", ng-class="{'treeview': module.isTree, 'is-expanded': active}", ng-click="active=!active && user.availableModules[$index]")
-          a.app-menu__item(ui-sref-active="active", ui-sref='{{module.route}}', ng-if="!module.isTree", ng-class="{'text-muted disabled': !user.availableModules[$index]}", ng-disabled="!user.availableModules[$index]")
+        li(ng-repeat="(key, module) in sideBar", ng-class="{'treeview': module.isTree, 'is-expanded': active}", ng-click="active=!active && user.availableModules[key]")
+          a.app-menu__item(ui-sref-active="active", ui-sref='{{module.route}}', ng-if="!module.isTree", ng-class="{'text-muted disabled': !$root.user.availableModules[key]}", ng-disabled="!$root.user.availableModules[key]")
             i.app-menu__icon.fa(class="{{module.icon}}")
-            span.app-menu__label
-              | {{module.name}}
-              span.badge.badge-secondary.float-right(ng-if="!user.availableModules[$index]") Indisponível
-          div(ng-if="module.isTree")
-            a.app-menu__item(href='#', data-toggle='treeview', ng-class="{'text-muted disabled': !user.availableModules[$index]}", ng-disabled="!user.availableModules[$index]")
-              i.app-menu__icon.fa(class="{{module.icon}}")
-              span.app-menu__label 
-                | {{module.name}}
-                span.badge.badge-secondary.float-right(ng-if="!user.availableModules[$index]") Indisponível
-              i.treeview-indicator.fa.fa-angle-right
-            ul.treeview-menu
-              li(ng-repeat="submodule in module.branchs")
-                a.treeview-item(ui-sref='{{submodule.route}}', href='')
-                  i.icon.fa.fa-angle-right
-                  |  {{submodule.name}}
+            span.app-menu__label.row
+              .col-sm-8
+                | {{module.name}}                
+              .col-sm-4.mt-1
+                .badge.badge-secondary.float-right(ng-if="user.availableModules[key]") Indisponível
