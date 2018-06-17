@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
@@ -142,5 +143,21 @@ class AuthController extends Controller
             'message' => 'authenticated_user',
             'data' => JWTAuth::parseToken()->authenticate()
         ]);
+    }
+
+    public function registerUser(Request $request)
+    {
+        $formData = $request->all();
+        
+        if($formData['password'] != $formData['confirm_password'])
+            return response()->json(['wrong_password'], 400);        
+
+        $user = new User;
+        $user->name = $formData['name'];
+        $user->email = $formData['email']; 
+        $user->password = app('hash')->make($formData['password']);
+        $user->save();
+
+        return response()->json(['success'], 200);        
     }
 }

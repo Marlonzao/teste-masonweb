@@ -21,4 +21,13 @@ app.controller('LoginController', ['$scope', '$rootScope', '$state', 'loginFacto
             }
         });
     }
+
+    $scope.register = function () {
+        ngDialog.open({
+            template: 'Login/Register/Register.html',
+            className: 'ngdialog-theme-default',
+            controller: 'RegisterController',
+            width: '700px'
+        });
+    }
 }]) 

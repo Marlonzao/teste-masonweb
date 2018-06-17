@@ -25,5 +25,15 @@ app.factory('userFactory', ['$http', 'apiURL', '$rootScope', function($http, api
         }
     }
 
+    userFactory.register = function(register){
+        return $http.post(apiURL.get()+'register/user', register).then(function(result){
+            if(result.data == 'success'){
+                return true
+            }
+        }, function(result){
+            return false
+        })
+    }
+
     return userFactory;
 }]);

@@ -23,6 +23,11 @@ $api->version('v1', function ($api) {
         'uses' => 'App\Http\Controllers\Auth\AuthController@postLogin',
     ]);
 
+    $api->post('/register/user', [
+        'uses' => 'App\Http\Controllers\Auth\AuthController@registerUser',
+        'as' => 'api.register.user',
+    ]);
+
     $api->group(['middleware' => 'api.auth'], function ($api) {
         $api->get('/', [
             'uses' => 'App\Http\Controllers\APIController@getIndex',
