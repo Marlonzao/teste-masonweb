@@ -20,7 +20,7 @@ Após todos os pré-requisitos estiverem instalados, execute:
 
 ```
 $ git clone https://github.com/Marlonzao/teste-masonweb.git
-$ cd backend
+$ cd teste-masonweb/backend
 $ composer install
 ```
 Crie uma cópia do arquvio .env.example no diretório backend/, renomeie a cópia para .env e edite seu conteúdo com as informações que o arquivo pede. Em seguida execute estes comandos
@@ -33,6 +33,10 @@ $ gulp default serve
 ```
 
 Em seguida a aplicação será aberta no browser pronta para ser testada, você pode fazer login após registrar um usúario.
+
+Se notar algum erro, tente atualizar a página, verificar o arquivo client/services/services/apiURL.js ou no mesmo diretório o fileUpload.js
+
+Se nada disso resolver, por favor entre em contato. 
 
 ## Built With
 
