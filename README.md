@@ -4,7 +4,7 @@ Tarefa de um crud simples para contratação pela MasonWeb
 
 ## Getting Started
 
-Esse projeto foi desenvolvido utilizando Laravel Lumen para backend e AngularJS com o automatizador de arquivos
+Esse projeto foi desenvolvido utilizando Laravel Lumen para backend e AngularJS no frontend com o automatizador de arquivos Gulp
 
 ### Prerequisites
 
