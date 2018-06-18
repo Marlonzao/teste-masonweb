@@ -22,8 +22,11 @@ Após todos os pré-requisitos estiverem instalados, execute:
 $ git clone 
 $ cd backend
 $ composer install
+```
+Crie uma cópia do arquvio .env.example no diretório backend/, renomeie a cópia para .env e edite seu conteúdo com as informações que o arquivo pede. Em seguida execute estes comandos
+
+```
 $ php artisan migrate
-$ php artisan db:seed
 $ cd ../client
 $ npm i
 $ gulp default serve
