@@ -19,7 +19,7 @@ Para executar este projeto, é necessário as seguintes tecnologias instaladas:
 Após todos os pré-requisitos estiverem instalados, execute:
 
 ```
-$ git clone 
+$ git clone https://github.com/Marlonzao/teste-masonweb.git
 $ cd backend
 $ composer install
 ```
@@ -32,9 +32,7 @@ $ npm i
 $ gulp default serve
 ```
 
-Em seguida a aplicação será aberta no browser pronta para ser testada, você pode fazer login com a conta: 
-    login: johndoe@example.com
-    password: 12345
+Em seguida a aplicação será aberta no browser pronta para ser testada, você pode fazer login após registrar um usúario.
 
 ## Built With
 
