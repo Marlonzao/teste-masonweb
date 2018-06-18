@@ -1,0 +1,22 @@
+h1 Inserir
+hr
+form(autocomplete="off", name='registerForm')
+    .form-group
+        label Primeiro nome
+        input.form-control(type='text', placeholder='Marlon, Márcio...', ng-model='register.first_name', ng-required='true')
+    .form-group
+        label Sobrenome
+        input.form-control(type='text', placeholder='de Oliveira, dos Santos...', ng-model='register.last_name', ng-required='true')
+    .form-group
+        label Email
+        input.form-control(type='email', placeholder='Email', ng-model='register.email', autocomplete="off", ng-required='true')
+    .form-group
+        label Sexo
+        select.form-control(ng-model='register.sex', ng-required='true')
+            option Masculino
+            option Feminino
+    .form-group
+        label Foto
+        br
+        input(type='file', file-model='myFile',  ng-model="myFile", name="myFile", valid-file)
+button.btn.btn-primary(ng-click='send(register, myFile)', ng-disabled="!(registerForm.$valid && myFile)") Enviar

@@ -1,0 +1,34 @@
+.row
+    .col-12
+        .loading-bro(ng-hide='loaded')
+            svg#load(x='0px', y='0px', viewbox='0 0 150 150')
+                circle#loading-inner(cx='75', cy='75', r='60')
+div(ng-cloak='', ng-show='loaded')
+    section
+        h1.display Editando pessoa - {{person.first_name + ' ' + person.last_name}}
+        hr
+        form(name='editForm')
+            .row.mb-3
+                .col-1
+                .col-10 
+                    .form-group
+                        label Primeiro nome
+                        input.form-control(ng-model='person.first_name', type='text', ng-required='true')
+                    .form-group
+                        label Segundo nome
+                        input.form-control(ng-model='person.last_name', type='text', ng-required='true')
+                    .form-group
+                        label Segundo nome
+                        input.form-control(ng-model='person.email', type='text', ng-required='true')
+                    .form-group
+                        label Sexo
+                        select.form-control(ng-model='person.sex', ng-required='true',)
+                            option Masculino
+                            option Feminino
+                    .form-group
+                        label Foto
+                        br
+                        input(type='file', file-model='myFile',  ng-model="myFile", name="myFile", valid-file)
+            .ngdialog-buttons.mt-5
+                button.ngdialog-button.ngdialog-button-primary(type='button', ng-click='send(person, myFile)') Enviar    
+                button.ngdialog-button.ngdialog-button-secondary(type='button', ng-click='closeThisDialog(0)') Cancelar

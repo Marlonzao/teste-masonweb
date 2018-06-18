@@ -1,0 +1,9 @@
+.card
+    img.card-img-top(ng-src="{{photoURL + person.id + '.jpg'}}?timestamp={{timestamp}}", alt='Card image cap')
+    .card-body.text-center
+        h5.card-title {{person.first_name + ' ' + person.last_name}}
+    section()
+        hr.m-1
+        .card-body
+            a.card-link(href='javascript:void(0)', ng-click="editPerson(person.id)") Editar
+            a.card-link(href='javascript:void(0)', ng-click="deletePerson(person.id)") Deletar

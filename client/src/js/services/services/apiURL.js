@@ -3,4 +3,9 @@ app.service('apiURL', ['$location', function($location) {
         if ($location.host() === "localhost")
             return $location.protocol() + "://" + $location.host() + "/teste-masonweb/backend/public/api/";
     };
+
+    this.photos = function(){
+        if ($location.host() === "localhost")
+            return $location.protocol() + "://" + $location.host() + "/teste-masonweb/uploads/";
+    };
 }]);

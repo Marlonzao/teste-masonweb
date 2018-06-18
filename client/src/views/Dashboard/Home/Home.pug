@@ -1,42 +1,26 @@
 .app-title
-  div
-    h1
-      i.fa.fa-tachometer-alt
-      |  Estatísticas
-    p Essa tela contém dados e gráficos sobre seus clientes e pedidos.
+    div
+        h1
+            i.fa.fa-graduation-cap
+            |  Pessoas
+        p Essa tela contém formulários para inserir ou editar pessoas.
 .row
-  .col-md-6.col-lg-3
-    .widget-small.primary.coloured-icon
-      i.icon.fa.fa-users.fa-3x
-      .info
-        h4 Clientes
-        p
-          b 5
-  .col-md-6.col-lg-3
-    .widget-small.info.coloured-icon
-      i.icon.fas.fa-thumbs-up.fa-3x
-      .info
-        h4 Likes
-        p
-          b 25
-  .col-md-6.col-lg-3
-    .widget-small.warning.coloured-icon
-      i.icon.fa.fa-files-o.fa-3x
-      .info
-        h4 Total de Pedidos
-        p
-          b 10
-  .col-md-6.col-lg-3
-    .widget-small.danger.coloured-icon
-      i.icon.ionicons.ion-pizza
-      .info
-        h4 Pizzas entregues
-        p
-          b 500
-.row
-  .col-md-6
-    .tile
-      h3.tile-title Vendas por mês
-  .col-md-6
-    .tile
-      h3.tile-title Sabores mais pedidos
+    .tile.mb-4.col
+        .page-header
+            .row.mb-3
+                .col
+                    h2.mb-3.line-head Pessoas
+                    .form-row.align-items-center
+                        .col
+                            input.form-control.mb-2(type='text', placeholder='Pesquisar...', ng-model='searchTerm', ng-enter='searchPerson(searchTerm)')
+                        .col-auto(style="border-right: 1px solid #333;")
+                            button.btn.btn-primary.mb-2(ng-click='searchPerson(searchTerm)') Pesquisar
+                        .col-auto
+                            .row.mt-1
+                                .col
+                                    button.btn.btn-info.mb-2(ng-click='addPerson()') Adicionar pessoa
+                    p.text-muted Últimoas pessoas cadastradas no sistema
+            .card-columns(ng-if='!resultPersons')
+                person-card(ng-repeat='person in persons', person='person')
+            .card-columns(ng-if='resultPersons.length > 0')
+                person-card(ng-repeat='person in resultPersons', person='person')
